@@ -1,10 +1,11 @@
 {
   "name": "@intzaaa/logger",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "whatever",
   "scripts": {
     "test": "tsx ./src/test.ts",
-    "build": "tsup ./src/index.ts --clean --dts --minify --format cjs,esm,iife"
+    "build": "tsup ./src/index.ts --clean --dts --minify --format cjs,esm,iife",
+    "publish": "npm publish --registry https://registry.npmjs.org"
   },
   "keywords": [
     "logger"
@@ -28,13 +29,12 @@
   ],
   "exports": {
     ".": {
-      "default": "./dist/index.js",
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs",
       "types": {
         "import": "./dist/index.d.ts",
         "require": "./dist/index.d.cts"
-      }
+      },
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
     }
   }
 }

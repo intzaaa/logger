@@ -19,7 +19,7 @@ const logger = (id: string, level: Level, message: string) => {
   if (level === "silent") return;
 
   const time = new Date().toISOString();
-  const log = [chalk[modeMap[level]](`[${time}-${level.toUpperCase()}]`), " | ", id, " | ", message];
+  const log = [chalk[modeMap[level]](`${time}-${level.toUpperCase()}`), " ", id, " ", message];
 
   if (process?.stdout?.write) {
     process.stdout.write(log.join("") + "\n");
