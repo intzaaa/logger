@@ -1,13 +1,8 @@
-type Level = "dbg" | "inf" | "wrn" | "err" | "silent";
-interface C2<T1, T2, R> {
-    (t1: T1): (t2: T2) => R;
-    (t1: T1, t2: T2): R;
-}
-interface C3<T1, T2, T3, R> {
-    (t1: T1): C2<T2, T3, R>;
-    (t1: T1, t2: T2): (t3: T3) => R;
-    (t1: T1, t2: T2, t3: T3): R;
-}
-declare const _default: C3<string, Level, string, void>;
+import * as _typed_curry from '@typed/curry';
 
-export { type Level, _default as default };
+declare const prettify_json: (raw: string | object) => string;
+declare const log_level: readonly ["FATAL", "ERROR", "WARN", "INFO", "DEBUG", "TRACE"];
+type LogLevel = (typeof log_level)[number];
+declare const logger: _typed_curry.Curry4<"FATAL" | "ERROR" | "WARN" | "INFO" | "DEBUG" | "TRACE", string, "FATAL" | "ERROR" | "WARN" | "INFO" | "DEBUG" | "TRACE", any[], void>;
+
+export { type LogLevel, logger, prettify_json };
